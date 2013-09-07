@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -34,6 +34,15 @@ class UsersController < ApplicationController
       flash[:error] = "Unable to update user"
       render 'edit'
     end
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:success] = "User was removed"
+    else
+      flash[:error] = "Unable to remove user"
+    end
+    redirect_to users_url
   end
 
   private
