@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "User was added"
-      redirect_to @user
+      redirect_to users_url
     else
       flash[:error] = "Unable to add user"
       render 'new'
