@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all
@@ -27,6 +27,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      flash[:success] = "User was updated"
+      redirect_to users_url
+    else
+      flash[:error] = "Unable to update user"
+      render 'edit'
+    end
   end
 
   private
