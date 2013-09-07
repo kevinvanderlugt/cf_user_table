@@ -8,6 +8,12 @@
       <%= user.phone %>
       <br>
       <%= user.email %>
+      <br>
+      <span class="links">
+        <%= link_to "Details", user %> |
+        <%= link_to "Edit", edit_user_path(user) %> | 
+        <%= link_to "Delete", user, method: :delete %>
+      </span>
     </li>
     <br>
   <% end %>
